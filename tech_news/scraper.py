@@ -1,6 +1,24 @@
+import requests
+import time
+
+
+def responseCheck(response):
+    return response.text if response.status_code == 200 else None
+
+
 # Requisito 1
 def fetch(url):
-    """Seu código deve vir aqui"""
+    try:
+        header = {"user-agent": "Fake user-agent"}
+        response = requests.get(url, headers=header, timeout=3)
+        time.sleep(1)
+        response.raise_for_status()
+    except (requests.HTTPError,
+            requests.Timeout,
+            requests.ConnectionError) as error:
+        print(error)
+        return None
+    return responseCheck(response)
 
 
 # Requisito 2

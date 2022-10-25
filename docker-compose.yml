@@ -12,6 +12,7 @@ services:
     command: bash
     restart: unless-stopped
     depends_on:
+      - mongodb
     environment:
       - DB_HOST=mongodb
     networks:

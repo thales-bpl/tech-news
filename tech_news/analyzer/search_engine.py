@@ -32,9 +32,23 @@ def search_by_date(date):
 
 # Requisito 8
 def search_by_tag(tag):
-    """Seu código deve vir aqui"""
+    news_found = []
+    news_by_tag = search_news({"tags": {"$regex": tag, "$options": "i"}})
+
+    for news in news_by_tag:
+        news_found.append((news["title"], news["url"]))
+
+    return news_found
 
 
 # Requisito 9
 def search_by_category(category):
-    """Seu código deve vir aqui"""
+    news_found = []
+    news_by_category = search_news(
+        {"category": {"$regex": category, "$options": "i"}}
+    )
+
+    for news in news_by_category:
+        news_found.append((news["title"], news["url"]))
+
+    return news_found

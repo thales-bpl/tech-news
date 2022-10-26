@@ -4,10 +4,10 @@ from tech_news.database import search_news
 # Requisito 6
 def search_by_title(title):
     news_found = []
-    news_by_title = search_news({"title": {"$regex": title}})
+    news_by_title = search_news({"title": {"$regex": title, "$options": "i"}})
 
     for news in news_by_title:
-        news_found.append(news["title"], news["url"])
+        news_found.append((news["title"], news["url"]))
 
     return news_found
 

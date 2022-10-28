@@ -18,7 +18,7 @@ def search_by_date(date):
     news_found = []
     try:
         date = datetime.strptime(date, '%Y-%m-%d')
-        date_db_format = datetime.strftime(date, '%d-%m-%Y')
+        date_db_format = datetime.strftime(date, '%d/%m/%Y')
         news_by_date = search_news({"timestamp": date_db_format})
 
         for news in news_by_date:
